@@ -1,0 +1,29 @@
+#include <BleKeyboard.h>
+
+BleKeyboard button_key; 
+
+const int keyCap = 2;
+bool lastState = HIGH;
+
+void setup() {
+  pinMode(keyCap, INPUT_PULLUP);
+  Serial.begin(115200);
+  Serial.println("Hello!");
+  button_key.begin();
+}
+
+void loop() {
+  if (button_key.isConnected()) {
+
+    bool currentState = digitalRead(keyCap);
+
+    // detect when button goes from HIGH → LOW (pressed)
+    if (lastState == HIGH && currentState == LOW) {
+      button_key.write(KEY_RETURN);
+      Serial.println("Sent Enter key");
+      delay(1000);
+    }
+
+    lastState = currentState; // update state
+  }
+}

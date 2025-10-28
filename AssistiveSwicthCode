@@ -1,6 +1,6 @@
 #include <BleKeyboard.h>
 
-BleKeyboard button_key; 
+BleKeyboard bleKeyboard("ESP32 Keyboard");
 
 const int keyCap = 2;
 bool lastState = HIGH;
@@ -8,22 +8,29 @@ bool lastState = HIGH;
 void setup() {
   pinMode(keyCap, INPUT_PULLUP);
   Serial.begin(115200);
-  Serial.println("Hello!");
-  button_key.begin();
+  Serial.println("Starting BLE Keyboard...");
+  delay(1000);
+  bleKeyboard.begin();
 }
 
 void loop() {
-  if (button_key.isConnected()) {
-
+  if (bleKeyboard.isConnected()) {
     bool currentState = digitalRead(keyCap);
 
-    // detect when button goes from HIGH → LOW (pressed)
     if (lastState == HIGH && currentState == LOW) {
-      button_key.write(KEY_RETURN);
-      Serial.println("Sent Enter key");
-      delay(1000);
+      Serial.println("Button pressed — sending Ctrl+C");
+
+      bleKeyboard.press(KEY_LEFT_CTRL);
+      bleKeyboard.press('v');
+      delay(100);
+      bleKeyboard.releaseAll();
+
+      delay(500); // debounce
     }
 
-    lastState = currentState; // update state
+    lastState = currentState;
+  } else {
+    Serial.println("Waiting for BLE connection...");
+    delay(1000);
   }
 }

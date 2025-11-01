@@ -1,6 +1,8 @@
 # Assistive-Buttton
 Our Assistive Switch is to be an open source button that can be made under 100$ from the materials required, as well as being Bluetooth (not including other factors like 3d Printers). We made our switch for the reason that many assistive buttons can be expensive, for example, on the website TTLC, an assistive switch from Pretorian Technologies sells a switch that is 210$ without taxes or shipping fees. As well the manufactures make it difficult to make it repairable or modifiable in the function, and astethics. Our goal with being open source is that it allows others to build the switch from the 3d blueprints and a bit of wiring, while being easy to build with instructions. The majority of the switch we have created is 3d printable, which allows people to make the color different depending on which materials to make it more aesthetically pleasing.
 
+<img width="776" height="404" alt="Image" src="https://github.com/user-attachments/assets/5b6b0bbb-0240-493c-9135-cbb11d09d37f" />
+
 # Functionality
 The switch has functions just like any other assistive switch on the market, and on button press, it activates a keypress or computer command such as 'K' or 'Enter'. It does this through a cherry mechanical switch of any kind and on keypress, sends the code to the Arduino, which then sends it to the specified device through Bluetooth.
 
@@ -15,7 +17,7 @@ PLA For the 3d printer 1$ <br/>
 With a total coming about to be 40$ (minus the cost of the 3d printer) <br/>
 Addional items include a sodering tool, any kind of wire cutters, and a computer to change the button output.
 
-# QnA: <br/>
+# QnA <br/>
 
 Q: What is the point of the battery? <br/>
 A: The battery is so that is bluetooth functionality works without constant power from the computer <br/>
